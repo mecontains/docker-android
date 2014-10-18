@@ -41,7 +41,7 @@ RUN chmod +x /usr/bin/repo
 
 USER builder
 WORKDIR /home/builder/android
-VOLUME /home/builder/android
+# MOUNTPOINT /home/builder/android
 
 USER root
 RUN chown -R builder:users /home/builder/android
