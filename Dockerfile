@@ -1,9 +1,7 @@
-FROM ubuntu:12.04
+FROM phusion/baseimage:0.9.9
 MAINTAINER Andrea Brancaleoni <miwaxe@gmail.com>
 
-
-ENV DEBIAN_FRONTEND noninteractive
-
+# Update System
 RUN sed -i 's/main$/main universe multiverse restricted/' /etc/apt/sources.list
 RUN apt-get -qq update
 
@@ -30,20 +28,9 @@ RUN useradd -s /bin/bash --create-home builder
 RUN echo 'builder:builder' | chpasswd
 RUN adduser builder sudo
 
-# Create SSH
-RUN apt-get install -y -q openssh-server
-RUN mkdir /var/run/sshd
-RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin no/' /etc/ssh/sshd_config
-
 # Adding REPO
 RUN curl https://storage.googleapis.com/git-repo-downloads/repo | sudo tee --append /usr/bin/repo
 RUN chmod +x /usr/bin/repo
 
-USER builder
-WORKDIR /home/builder/android
-# MOUNTPOINT /home/builder/android
-
-USER root
-RUN chown -R builder:users /home/builder/android
-EXPOSE 22
-CMD ["/usr/sbin/sshd", "-D"]
+# Clean up APT when done.
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
