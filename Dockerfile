@@ -29,7 +29,7 @@ RUN echo 'builder:builder' | chpasswd
 RUN adduser builder sudo
 
 # Adding REPO
-RUN curl https://storage.googleapis.com/git-repo-downloads/repo | sudo tee --append /usr/bin/repo
+ADD https://storage.googleapis.com/git-repo-downloads/repo /usr/bin/repo
 RUN chmod +x /usr/bin/repo
 
 # Clean up APT when done.
