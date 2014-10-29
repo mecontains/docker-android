@@ -38,8 +38,8 @@ Lift the container:
 
 Connect to the container with:
 
-    user@host> ssh builder@localhost -P 2222 # The default password for builder is builder
-<!--      -->
+    user@host> ssh builder@localhost -p 2222 # The default password for builder is builder
+
 Your android build distribution is ready to be use:
 
     builder@guest> # do whatever you want
@@ -49,7 +49,7 @@ Real World Android Build
     
     user@host> docker build -t android . # Build the Container
     user@host> docker run -p 127.0.0.1:2222:22 -v $HOME/android/:/home/builder/android/ -d -t android # Configure the Container
-    user@host> ssh builder@localhost -P 2222 # Connects to the Container
+    user@host> ssh builder@localhost -p 2222 # Connects to the Container
     builder@guest> cd android # Move to android directory 
     builder@guest:android> repo init -u https://android.googlesource.com/platform/manifest -b android-4.4.4_r2
     builder@guest:android> repo sync \
