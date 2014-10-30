@@ -18,7 +18,7 @@ RUN apt-get install --no-install-recommends -y -q git gnupg flex bison gperf bui
   libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 \
   libgl1-mesa-dev g++-multilib mingw32 tofrodos \
   python-markdown libxml2-utils xsltproc zlib1g-dev:i386 \
-  bc schedtool libbctsp-java libbcprov-java libbcpg-java
+  bc schedtool libbctsp-java libbcprov-java libbcpg-java unzip
 RUN ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so
 RUN apt-get install -y -q ccache
 ADD ccache.sh /etc/profile.d/ccache.sh
