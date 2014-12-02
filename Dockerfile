@@ -30,7 +30,7 @@ RUN adduser builder sudo
 
 # Adding REPO
 ADD https://storage.googleapis.com/git-repo-downloads/repo /usr/bin/repo
-RUN chmod +x /usr/bin/repo
+RUN chmod +rx /usr/bin/repo
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
