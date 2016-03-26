@@ -25,3 +25,7 @@ RUN chmod +rx /usr/bin/repo
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+USER builder
+WORKDIR /home/builder
+CMD bash
