@@ -14,6 +14,9 @@ RUN apt-get install -yq zlib1g-dev:i386 && apt-get install -yq openjdk-7-jdk \
 RUN apt-get install -y -q ccache
 ADD ccache.sh /etc/profile.d/ccache.sh
 
+# Install Devtools
+RUN apt-get install -y -q tig vim htop dtach ruby ruby-dev && gem install git-up && apt-get remove --purge -y -q ruby-dev
+
 # Create Builder user
 RUN useradd -s /bin/bash --create-home builder
 RUN echo 'builder:builder' | chpasswd
