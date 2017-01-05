@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.18
+FROM phusion/baseimage:0.9.19
 MAINTAINER Andrea Brancaleoni <miwaxe@gmail.com>
 
 # Update System
@@ -7,11 +7,12 @@ RUN apt-get -qq update
 
 # Prepare Build Tools
 RUN dpkg --add-architecture i386 && apt-get update -yq
-RUN apt-get install -yq zlib1g-dev:i386 && apt-get install -yq openjdk-7-jdk \
+RUN apt-get install -yq zlib1g-dev:i386 && apt-get install -yq openjdk-8-jdk \
 	bison g++-multilib git gperf libxml2-utils make \
 	python-networkx zip \
 	bc schedtool unzip less maven
 RUN apt-get install -y -q ccache
+RUN apt-get install -y -q imagemagick
 ADD ccache.sh /etc/profile.d/ccache.sh
 
 # Install Devtools
